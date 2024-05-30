@@ -41,7 +41,6 @@ class StudentDetailFragment : Fragment() {
     private fun observeViewModel() {
         viewModel.studentLD.observe(viewLifecycleOwner, Observer { student ->
             binding.student = student
-
             binding.btnUpdate.setOnClickListener {
                 Observable.timer(5, TimeUnit.SECONDS)
                     .subscribeOn(Schedulers.io())

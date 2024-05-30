@@ -1,5 +1,6 @@
 package com.example.anmpstudent.view
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,12 +16,13 @@ import com.example.anmpstudent.databinding.StudentListItemBinding
 import com.example.anmpstudent.model.Student
 import com.squareup.picasso.Picasso
 @BindingAdapter("android:imageUrl")
-fun loadPhotoURL(imageView: ImageView, url:String) {
+fun loadPhotoURL(imageView: ImageView, url: String) {
+    Log.d("Picasso", "Loading image from URL: $url")
+
     val picasso = Picasso.Builder(imageView.context)
     picasso.listener { picasso, uri, exception ->
-        exception.printStackTrace()
+        Log.e("Picasso", "Error loading image from $uri", exception)
     }
     picasso.build().load(url).into(imageView)
 }
-
 
